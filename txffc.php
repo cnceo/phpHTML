@@ -22,12 +22,13 @@ if($conn->connect_error){
 //    echo $conn->query($sql);
 }
 
-$date = getDateFromRange('2018-07-01','2018-07-21');
+$date = getDateFromRange('2018-07-02','2018-07-21');
 foreach ($date as $v){
     //function pachong(){
     for($j=1;$j<=15;$j++){
         var_dump("date:".$v."  page:".$j);
-        $url='http://www.caim8.com/index.php?s=/Abroad/open_ssc/cz/xtxffc/dt/'.$v.'/p/'.$j.'.html';
+//        http://www.caim8.com/index.php?s=/Abroad/open_ssc/cz/txffc/dt/20180718/p/2.html
+        $url='http://www.caim8.com/index.php?s=/Abroad/open_ssc/cz/txffc/dt/'.$v.'/p/'.$j.'.html';
         var_dump($url) ;
         phpQuery::newDocumentFile($url);
 //        var_dump($query);
@@ -52,7 +53,7 @@ foreach ($date as $v){
                 $nuumber=pq(".ssc>tr:eq(".$i.")>td:eq(1)>div>span:eq(0)")->html().pq(".ssc>tr:eq(".$i.")>td:eq(1)>div>span:eq(1)")->html().pq(".ssc>tr:eq(".$i.")>td:eq(1)>div>span:eq(2)")->html().pq(".ssc>tr:eq(".$i.")>td:eq(1)>div>span:eq(3)")->html().pq(".ssc>tr:eq(".$i.")>td:eq(1)>div>span:eq(4)")->html();
 
 //            var_dump($nuumber);
-                $sql="insert into txyfc (`periods`,`number`,`time`,`addTime`) VALUES ('".$q."','".$nuumber."','".$timeForDate."','".time()."')";
+                $sql="insert into txffc (`periods`,`number`,`time`,`addTime`) VALUES ('".$q."','".$nuumber."','".$timeForDate."','".time()."')";
                 $res=$conn->query($sql);
                 if($res){
                     var_dump($q." insert success");

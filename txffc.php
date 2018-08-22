@@ -22,7 +22,7 @@ if($conn->connect_error){
 //    echo $conn->query($sql);
 }
 
-$date = getDateFromRange('2018-07-02','2018-07-21');
+$date = getDateFromRange('2018-02-14','2018-02-14');
 foreach ($date as $v){
     //function pachong(){
     for($j=1;$j<=15;$j++){
@@ -56,7 +56,7 @@ foreach ($date as $v){
                 $sql="insert into txffc (`periods`,`number`,`time`,`addTime`) VALUES ('".$q."','".$nuumber."','".$timeForDate."','".time()."')";
                 $res=$conn->query($sql);
                 if($res){
-                    var_dump($q." insert success");
+                    var_dump($q." insert success".$nuumber);
                 }else{
                     var_dump($q." insert error ".$conn->error);
                 }
